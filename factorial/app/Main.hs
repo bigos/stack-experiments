@@ -5,24 +5,23 @@ module Main (main) where
 factorialLimit :: Integer
 factorialLimit = 15
 
-myFactorial :: Integer -> Integer
-myFactorial num = factorial num
-  where
-    factorial 0 = 1
-    factorial n = n * factorial (n - 1)
+factorial :: Integer -> Integer
+factorial 0 = 1
+factorial n = n * factorial (n - 1)
 
 main :: IO ()
 main =
   putStrLn "Printing  factorial"
     >> putStrLn ("enter number for factorial, but do not exceed " ++ show factorialLimit)
-    >> getLine >>= \theLimit ->
-      putStrLn ("thank you for entering " ++ theLimit)
-        >> if (read theLimit :: Integer) < 1
-          then putStrLn "the limist must be 1 or more"
-          else
-            if (read theLimit :: Integer) <= factorialLimit
-              then
-                putStrLn "the limit looks Ok"
-                  >> putStrLn ("going  to calculate factorial for " ++ theLimit)
-                  >> putStrLn ("calculated factorial is: " ++ show (myFactorial (read theLimit :: Integer)))
-              else putStrLn "you exceeded the limit"
+    >> getLine >>= \readLimit ->
+      putStrLn ("thank you for entering " ++ readLimit)
+        >> let limit = (read readLimit :: Integer)
+            in if (read readLimit :: Integer) < 1
+                 then putStrLn "the limist must be 1 or more"
+                 else
+                   if limit <= factorialLimit
+                     then
+                       putStrLn "the limit looks Ok"
+                         >> putStrLn ("going  to calculate factorial for " ++ readLimit)
+                         >> putStrLn ("calculated factorial is: " ++ show (factorial limit))
+                     else putStrLn "you exceeded the limit"
