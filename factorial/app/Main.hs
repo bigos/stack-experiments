@@ -17,7 +17,7 @@ main =
       let limit = (read readLimit :: Integer)
        in putStrLn ("thank you for entering " ++ readLimit)
             >> if limit < 1
-              then putStrLn "the limist must be 1 or more"
+              then putStrLn "the limit must be 1 or more"
               else
                 if limit > factorialLimit
                   then putStrLn "you exceeded the limit"
