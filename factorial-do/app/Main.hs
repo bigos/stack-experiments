@@ -16,12 +16,12 @@ main = do
   readLimit <- getLine
   putStrLn ("thank you for entering " ++ readLimit)
   let limit = (read readLimit :: Integer)
-   in if limit < 1
-        then putStrLn "the limit must be 1 or more"
-        else
-          if limit > factorialLimit
-            then putStrLn "you exceeded the limit"
-            else do
-              putStrLn "the limit looks Ok"
-              putStrLn ("going  to calculate factorial for " ++ readLimit)
-              putStrLn ("calculated factorial is: " ++ show (factorial limit))
+  if limit < 1
+    then putStrLn "the limit must be 1 or more"
+    else
+      if limit > factorialLimit
+        then putStrLn "you exceeded the limit"
+        else do
+          putStrLn "the limit looks Ok"
+          putStrLn ("going  to calculate factorial for " ++ readLimit)
+          putStrLn ("calculated factorial is: " ++ show (factorial limit))
