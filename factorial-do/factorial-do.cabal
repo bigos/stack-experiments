@@ -40,6 +40,7 @@ library
 executable factorial-do-exe
   main-is: Main.hs
   other-modules:
+      Main_224624232450466_flymake
       Paths_factorial_do
   autogen-modules:
       Paths_factorial_do
