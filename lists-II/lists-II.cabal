@@ -40,6 +40,7 @@ library
 executable lists-II-exe
   main-is: Main.hs
   other-modules:
+      Main_062331079554661_flymake
       Paths_lists_II
   autogen-modules:
       Paths_lists_II
