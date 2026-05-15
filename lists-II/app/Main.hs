@@ -27,7 +27,7 @@ rleDecoder :: Enum a => [(a, Int)] -> [a]
 rleDecoder l = concat (rle_decoder0 l)
   where
     -- eta reduce, removed the l argument
-    --(\(n, m) -> (mynums n m))
+    -- this was replaced by (uncurry minums) => (\(n, m) -> (mynums n m))
     rle_decoder0 = map (uncurry mynums)
     mynums n m = take m [n, n ..]
 
