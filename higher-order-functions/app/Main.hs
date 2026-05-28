@@ -19,7 +19,8 @@ quicksort' c (x : xs) = (quicksort' c less) ++ (x : equal) ++ (quicksort' c more
     equal = filter (\y -> y `c` x == EQ) xs
     more = filter (\y -> y `c` x == GT) xs
 
--- exercises for descending and case insensitive
+-- for function
+for startValue endFn stepFn execFn =
 
 -- TODO  flipping arguments
 
