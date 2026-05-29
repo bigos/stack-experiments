@@ -29,7 +29,7 @@ for startValue endFn stepFn execFn =
     else return ()
 
 tryFor :: (Ord a, Num a, Show a) => a -> IO ()
-tryFor zv = for zv (< 5) (+ 1) print
+tryFor zv = for zv (<= 5) (+ 1) print
 
 -- TODO  flipping arguments
 
