@@ -13,14 +13,23 @@ quicksort (x : xs) = (quicksort less) ++ (x : equal) ++ (quicksort more)
 
 quicksort' :: (Ord a) => (a -> a -> Ordering) -> [a] -> [a]
 quicksort' _ [] = [] -- ignore comparison function
-quicksort' c (x : xs) = (quicksort' c less) ++ (x : equal) ++ (quicksort' c more)
+quicksort' c (x : xs) = quicksort' c less ++ (x : equal) ++ quicksort' c more
   where
     less = filter (\y -> y `c` x == LT) xs
     equal = filter (\y -> y `c` x == EQ) xs
     more = filter (\y -> y `c` x == GT) xs
 
 -- for function
+for :: a -> (a -> Bool) -> (a -> a) -> (a -> IO ()) -> IO ()
 for startValue endFn stepFn execFn =
+  if endFn startValue
+    then
+      execFn startValue
+        >> for (stepFn startValue) endFn stepFn execFn
+    else return ()
+
+tryFor :: (Ord a, Num a, Show a) => a -> IO ()
+tryFor zv = for zv (< 5) (+ 1) print
 
 -- TODO  flipping arguments
 
@@ -30,4 +39,6 @@ main = do
   putStrLn "sorting"
   print (show (quicksort [6, 2, 5, 1, 4, 3]))
   putStrLn "higher order sorting"
-  print (show (quicksort' compare [6, 2, 5, 7, 0, 1, 4, 3]))
+  print (show (quicksort' compare [6, 2, 5, 7, 1, 4, 3]))
+  putStrLn "higher order for"
+  tryFor 1
