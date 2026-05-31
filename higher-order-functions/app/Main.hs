@@ -19,6 +19,9 @@ quicksort' c (x : xs) = quicksort' c less ++ (x : equal) ++ quicksort' c more
     equal = filter (\y -> y `c` x == EQ) xs
     more = filter (\y -> y `c` x == GT) xs
 
+-- one liner for written by more advanced haskellers
+-- mapM print $ takeWhile (<= 5) $ iterate (+1) 1
+
 -- for function
 for :: a -> (a -> Bool) -> (a -> a) -> (a -> IO ()) -> IO ()
 for startValue endFn stepFn execFn =
@@ -39,6 +42,8 @@ main = do
   putStrLn "sorting"
   print (show (quicksort [6, 2, 5, 1, 4, 3]))
   putStrLn "higher order sorting"
-  print (show (quicksort' compare [6, 2, 5, 7, 1, 4, 3]))
+  print
+    ( show (quicksort' compare [6, 2, 5, 7, 1, 4, 3])
+    )
   putStrLn "higher order for"
   tryFor 1

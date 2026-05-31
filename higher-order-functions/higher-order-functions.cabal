@@ -40,6 +40,7 @@ library
 executable higher-order-functions-exe
   main-is: Main.hs
   other-modules:
+      Main_224552831977540_flymake
       Paths_higher_order_functions
   autogen-modules:
       Paths_higher_order_functions
